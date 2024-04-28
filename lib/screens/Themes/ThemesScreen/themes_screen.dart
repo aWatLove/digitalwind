@@ -9,13 +9,21 @@ class ThemePreview extends StatelessWidget {
   Widget build(BuildContext context) {
     return  InkWell(onTap: () {
       print(id);
-      Navigator.pushNamed(context, '/second', arguments: {'id':id});
-    } ,child:ListTile(
-      title: Text(
-        'Theme Preview for ID: $id',
-        style: Theme.of(context).textTheme.headline6,
-      ),
-    ));
+      Navigator.pushNamed(context, '/theme', arguments: {'id':id});
+    } , child: Column(
+      children: <Widget>[
+        ListTile(
+          title: Text(
+            'Theme Preview for ID: $id',
+            style: Theme.of(context).textTheme.headline6,
+          ),
+        ),
+        Image.asset('assets/preview/moneyGang.png')
+        ],
+    
+    )
+    
+    );
   }
 }
 
@@ -34,6 +42,7 @@ const ThemeScreen({super.key});
           return ThemePreview(id: index.toString(), key: ValueKey(index.toString()));
         },
       ),
+
     );
   }
 }
