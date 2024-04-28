@@ -9,7 +9,7 @@ class ThemePreview extends StatelessWidget {
   Widget build(BuildContext context) {
     return  InkWell(onTap: () {
       print(id);
-      Navigator.pushNamed(context, '/theme', arguments: {'id':id});
+      Navigator.pushNamed(context, '/second', arguments: {'id':id});
     } ,child:ListTile(
       title: Text(
         'Theme Preview for ID: $id',

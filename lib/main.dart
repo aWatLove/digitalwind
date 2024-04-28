@@ -10,12 +10,13 @@ void main() {
       // on the FirstScreen widget.
       initialRoute: '/',
       onGenerateRoute: (settings) {
-        // final args = settings.arguments;
+        final Map args = (settings.arguments??{}) as Map;
+        print(args.containsKey('id'));
         switch(settings.name){
           case'/':return MaterialPageRoute(builder:(_) => const ThemeScreen());
-          // case 'theme' : 
-            // final dynamic id = args['id'];
-          //  return MaterialPageRoute(builder:(_) => id!=null? ThemeDetailScreen(id:id):const Four04Page("вывы") );
+          case '/theme' : 
+            final dynamic id = args['id'];
+           return MaterialPageRoute(builder:(_) => ThemeDetailScreen(id:id));
           default : return MaterialPageRoute(builder: (_) => const Four04Page("ds")); 
         }
       },
