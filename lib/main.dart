@@ -2,6 +2,8 @@ import 'package:dw/screens/Themes/ThemesScreen/themes_screen.dart';
 import 'package:dw/screens/not_found_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'screens/ThemeDetail/ThemeDetail.dart';
+
 void main() {
   runApp(
     MaterialApp(
@@ -11,62 +13,14 @@ void main() {
       initialRoute: '/',
       onGenerateRoute: (settings) {
         final Map args = (settings.arguments??{}) as Map;
-        print(args.containsKey('id'));
         switch(settings.name){
           case'/':return MaterialPageRoute(builder:(_) => const ThemeScreen());
           case '/theme' : 
-            final dynamic id = args['id'];
-           return MaterialPageRoute(builder:(_) => ThemeDetailScreen(id:id));
-          default : return MaterialPageRoute(builder: (_) => const Four04Page("ds")); 
+            // final dynamic id = args['id'];
+           return MaterialPageRoute(builder:(_) => const ThemeDetailScreen());
+          default : return MaterialPageRoute(builder: (_) => const Four04Page("Такой страницы нет 😵‍💫")); 
         }
       },
     ),
   );
-}
-
-class FirstScreen extends StatelessWidget {
-  const FirstScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('First Screen'),
-      ),
-      body: Center(
-        child: InkWell(
-          // Within the `FirstScreen` widget
-          onTap: () {
-            // Navigate to the second screen using a named route.
-            Navigator.pushNamed(context, '/second');
-          },
-          child: const Text('Launch screen'),
-        ),
-      ),
-    );
-  }
-}
-
-class SecondScreen extends StatelessWidget {
-  const SecondScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Second Screen'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          // Within the SecondScreen widget
-          onPressed: () {
-            // Navigate back to the first screen by popping the current route
-            // off the stack.
-            Navigator.pop(context);
-          },
-          child: const Text('Go back!'),
-        ),
-      ),
-    );
-  }
 }
