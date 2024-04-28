@@ -1,3 +1,4 @@
+import 'package:dw/entities/test/ui/test_preview.dart';
 import 'package:flutter/material.dart';
 
 class ThemePreview extends StatelessWidget {
@@ -36,10 +37,12 @@ const ThemeScreen({super.key});
         title: Text('Theme List'),
       ),
       body: ListView.builder(
-        itemCount: 5, // Количество элементов в списке
+        shrinkWrap: true,
+        itemCount: 10, // Количество элементов в списке
         itemBuilder: (context, index) {
           // Замените `index.toString()` на ваш реальный идентификатор темы
-          return ThemePreview(id: index.toString(), key: ValueKey(index.toString()));
+          // return ThemePreview(id: index.toString(), key: ValueKey(index.toString()));
+          return TestPreview(imagePath: "assets/preview/sponge.png", text: "some text", id: index.toString());
         },
       ),
 

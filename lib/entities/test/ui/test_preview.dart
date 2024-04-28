@@ -18,24 +18,40 @@ class TestPreview extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
-          color: Colors.grey[200],
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              width: 100,
-              height: 100,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                image: DecorationImage(
-                  image: AssetImage(imagePath),
-                  fit: BoxFit.cover,
-                ),
-              ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 3,
+              blurRadius: 2,
+              offset: Offset(0, 3), // changes position of shadow
             ),
-            const SizedBox(width: 10),
-            Expanded(
+          ],
+          color: Colors.white,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              // width: 200,
+              height: 169,
+              child: Container(
+                // width: 100,
+                height: 200,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  image: DecorationImage(
+                    image: AssetImage(imagePath),
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
+              )
+            ),
+            
+            // const SizedBox(width: 10),
+
+            SizedBox(
+              width: 100,
+              height: 150,
               child: Text(
                 text,
                 style: const TextStyle(fontSize: 16),

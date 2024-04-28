@@ -16,6 +16,9 @@ void main() {
           case'/':return MaterialPageRoute(builder:(_) => const ThemeScreen());
           case '/theme' : 
             final dynamic id = args['id'];
+            if (id == null){
+              return MaterialPageRoute(builder: (_) => const Four04Page("id is null"));
+            } 
            return MaterialPageRoute(builder:(_) => ThemeDetailScreen(id:id));
           default : return MaterialPageRoute(builder: (_) => const Four04Page("ds")); 
         }
