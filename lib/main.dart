@@ -16,8 +16,8 @@ void main() {
         switch(settings.name){
           case'/':return MaterialPageRoute(builder:(_) => const ThemeScreen());
           case '/theme' : 
-            // final dynamic id = args['id'];
-           return MaterialPageRoute(builder:(_) => const ThemeDetailScreen());
+            final int id = int.parse(args['id']);
+           return MaterialPageRoute(builder:(_) => ThemeDetailScreen(id));
           default : return MaterialPageRoute(builder: (_) => const Four04Page("Такой страницы нет 😵‍💫")); 
         }
       },
