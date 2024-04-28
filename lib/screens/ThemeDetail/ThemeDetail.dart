@@ -5,7 +5,7 @@ class ThemeDetail extends StatelessWidget {
   Widget build(Object context) {
     // TODO: implement build
     return Column(children: [
-      Image.asset(name)
+      // Image.asset(name)
     ]);
   }
 
