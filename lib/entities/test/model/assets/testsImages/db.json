@@ -1,0 +1,11 @@
+{
+    "themes":{
+        "cover":"",
+        "title":"",
+        "proccess":"",
+        "description_blocks":[
+            {"text":"", "cover":""}
+        ]
+    }
+   
+}

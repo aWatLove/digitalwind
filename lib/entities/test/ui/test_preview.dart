@@ -5,12 +5,12 @@ class TestPreview extends StatelessWidget {
   final  String imagePath;
   final String text;
 
-  TestPreview({required this.imagePath, required this.text});
+  const TestPreview({super.key, required this.imagePath, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
         color: Colors.grey[200],
@@ -29,11 +29,11 @@ class TestPreview extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Expanded(
             child: Text(
               text,
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
           ),
         ],
