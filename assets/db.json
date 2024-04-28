@@ -1,0 +1,24 @@
+{
+    "themes":[
+        {
+            "cover":"assets/preview/moneyGang.png", 
+            "title":"Абоба", 
+            "description_blocks":[ 
+                {
+                    "text":"В первую очередь", 
+                    "cover":"assets/preview/moneyGang.png"
+                } 
+            ],
+            "test":[ 
+                {
+                    "cover":"assets/preview/moneyGang.png",
+                    "question":"какой день", 
+                    "answer":["Солнечный", "Плохой"], 
+                    "rightanswer":1
+                }
+            ]
+        }
+
+    ]
+   
+}
