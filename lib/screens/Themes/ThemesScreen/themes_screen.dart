@@ -1,3 +1,4 @@
+import 'package:dw/entities/test/ui/test_preview.dart';
 import 'package:flutter/material.dart';
 
 class ThemePreview extends StatelessWidget {
@@ -7,41 +8,75 @@ class ThemePreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  InkWell(onTap: () {
-      Navigator.pushNamed(context, '/theme', arguments: {'id':id});
-    } , child: Column(
-      children: <Widget>[
-        ListTile(
-          title: Text(
-            'Theme Preview for ID: $id',
-            style: Theme.of(context).textTheme.headline6,
-          ),
-        ),
-        Image.asset('assets/preview/moneyGang.png')
-        ],
-    
-    )
-    
-    );
+    return InkWell(
+        onTap: () {
+          print(id);
+          Navigator.pushNamed(context, '/theme', arguments: {'id': id});
+        },
+        child: Column(
+          children: <Widget>[
+            ListTile(
+              title: Text(
+                'Theme Preview for ID: $id',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ),
+            Image.asset('assets/preview/moneyGang.png')
+          ],
+        ));
   }
 }
 
 class ThemeScreen extends StatelessWidget {
-const ThemeScreen({super.key});
+  const ThemeScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Theme List'),
+        ),
+        body: Center(
+          child: SizedBox(
+            width: 400,
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: 10, // Количество элементов в списке
+              itemBuilder: (context, index) {
+                // Замените `index.toString()` на ваш реальный идентификатор темы
+                // return ThemePreview(id: index.toString(), key: ValueKey(index.toString()));
+                return TestPreview(
+                  imagePath: "assets/preview/sponge.png",
+                  text: "Основы финансовой грамотности",
+                  id: index.toString(),
+                  proccess: true,
+                );
+              },
+            ),
+          ),
+        ));
+  }
+}
+
+class ThemeDetailScreen extends StatelessWidget {
+  final String id;
+  const ThemeDetailScreen({super.key, required this.id});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Theme List'),
+        title: Text('Theme_$id'),
       ),
-      body: ListView.builder(
-        itemCount: 5, // Количество элементов в списке
-        itemBuilder: (context, index) {
-          // Замените `index.toString()` на ваш реальный идентификатор темы
-          return ThemePreview(id: index.toString(), key: ValueKey(index.toString()));
-        },
-      ),
-
+      body: InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, '/theme');
+          },
+          child: ListTile(
+            title: Text(
+              'Theme Preview for ID: $id',
+              style: Theme.of(context).textTheme.headline6,
+            ),
+          )),
     );
   }
 }
+
