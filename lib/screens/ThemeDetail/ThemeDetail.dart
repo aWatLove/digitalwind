@@ -62,7 +62,7 @@ class ThemeDetailScreen extends StatelessWidget {
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15.0))),
+                                    borderRadius: BorderRadius.circular(20.0))),
                         padding: MaterialStateProperty.all(
                             const EdgeInsets.all(16.0)),
                         backgroundColor: MaterialStateProperty.all(
@@ -81,6 +81,7 @@ class ThemeDetailScreen extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Container(
                       color: const Color(0xF9F7F7),
+                      margin: EdgeInsets.only(bottom: 50), // fix button in bottom
                       height: MediaQuery.of(context).size.height,
                       width: double.infinity,
                       constraints: const BoxConstraints(maxWidth: 600),
@@ -108,7 +109,7 @@ class BLockItem extends StatelessWidget {
       children: [
         ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(18.0)),
-            child: Image.asset(block.cover,
+            child: Image.asset(block.cover, width: double.infinity,
                  fit: BoxFit.cover)),
         //  Expanded(child:
         const SizedBox(height: 11),

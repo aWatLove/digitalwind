@@ -74,7 +74,7 @@ Widget build(BuildContext context) {
         
         return Scaffold(
           appBar: AppBar(
-            title: Text('Theme List'),
+            title: Text('Какие то тестики'), //TODO: незабыть поменять
           ),
           body: Center(
             child: SizedBox(
@@ -89,7 +89,7 @@ Widget build(BuildContext context) {
                     imagePath: theme.cover,
                     text: theme.title,
                     id: theme.id.toString(),
-                    proccess: false, //TODO: процесс завершен/не завершен
+                    proccess: true, //TODO: процесс завершен/не завершен
                   );
                 },
               ),

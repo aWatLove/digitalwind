@@ -140,7 +140,7 @@ class _TestState extends State<TestScreen> {
                 ],
               )),
           appBar: AppBar(
-            title: Text('Test for Theme ${test.title}'),
+            title: Text('${test.title}'),
           ),
           body: 
             Column(
