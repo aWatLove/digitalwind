@@ -102,13 +102,14 @@ class BLockItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print(block);
+    print(block.cover);
     // TODO: implement build
     return Column(
       children: [
         ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(18.0)),
             child: Image.asset(block.cover,
-                width: double.infinity, fit: BoxFit.cover)),
+                 fit: BoxFit.cover)),
         //  Expanded(child:
         const SizedBox(height: 11),
 
