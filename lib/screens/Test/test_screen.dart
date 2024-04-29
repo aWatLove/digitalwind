@@ -166,7 +166,7 @@ class _TestState extends State<TestScreen> {
                       
                     ),
                     onPressed: () => answerQuestion(index),
-                    child: SizedBox(width: 180,child:Center(child:Text(answer, style: TextStyle(fontSize: 16, color: Colors.black),))),
+                    child: Container(padding: EdgeInsets.symmetric(vertical: 10), width: 180, height: 65, child:Center(child:Text(answer, style: TextStyle(fontSize: 14, color: Colors.black),textAlign: TextAlign.center,))),
                   );
                 }).toList(),
                 const SizedBox(height: 20)
