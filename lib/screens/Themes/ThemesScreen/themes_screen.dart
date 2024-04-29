@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:dw/entities/test/model/tests_repo.dart';
 import 'package:dw/entities/test/ui/test_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import '../../../entities/test/model/dto/theme.dart';
 
 class ThemePreview extends StatelessWidget {
   final String id;
@@ -32,33 +37,68 @@ class ThemePreview extends StatelessWidget {
 }
 
 class ThemeScreen extends StatelessWidget {
+
   const ThemeScreen({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Theme List'),
-        ),
-        body: Center(
-          child: SizedBox(
-            width: 400,
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: 10, // Количество элементов в списке
-              itemBuilder: (context, index) {
-                // Замените `index.toString()` на ваш реальный идентификатор темы
-                // return ThemePreview(id: index.toString(), key: ValueKey(index.toString()));
-                return TestPreview(
-                  imagePath: "assets/preview/sponge.png",
-                  text: "Основы финансовой грамотности",
-                  id: index.toString(),
-                  proccess: true,
-                );
-              },
+
+  Future<List<ThemeDTO>> _loadJsonData() async {
+    String jsonString = await rootBundle.loadString('assets/db.json');
+    List<ThemeDTO> themsDtos = [];
+    List<dynamic> themes = json.decode(jsonString)['themes'];
+    themes.forEach((element) {
+      // List<DescriptionBlock> blocks = [];
+      // List<TestDTO> test = [];
+      ThemeDTO theme = ThemeDTO(
+          element['id'], element['cover'], [], element['title'], []);
+      themsDtos.add(theme);
+    });
+    // ThemeDTO t = (themsDtos.elementAt(id));
+    return themsDtos;
+  }
+
+@override
+Widget build(BuildContext context) {
+  var themesFuture = _loadJsonData();
+  
+  return FutureBuilder<List<ThemeDTO>>(
+    future: themesFuture,
+    builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        // Показываем индикатор загрузки, пока данные загружаются
+        return CircularProgressIndicator();
+      } else if (snapshot.hasError) {
+        // Показываем сообщение об ошибке, если произошла ошибка
+        return Text('Error: ${snapshot.error}');
+      } else {
+        // Отображаем список тем, когда данные загружены
+        List<ThemeDTO> themes = snapshot.data!;
+        
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('Theme List'),
+          ),
+          body: Center(
+            child: SizedBox(
+              width: 400,
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: themes.length,
+                itemBuilder: (context, index) {
+                  // Используем элементы из списка загруженных тем
+                  ThemeDTO theme = themes[index];
+                  return TestPreview(
+                    imagePath: theme.cover,
+                    text: theme.title,
+                    id: theme.id.toString(),
+                    proccess: false, //TODO: процесс завершен/не завершен
+                  );
+                },
+              ),
             ),
           ),
-        ));
-  }
+        );
+      }
+    },
+  );
 }
-
+}
 

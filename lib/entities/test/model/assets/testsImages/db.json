@@ -41,6 +41,90 @@
                     "rightanswer":2
                 }
             ]
+        },
+        {
+            "id":1,
+            "cover":"assets/preview/moneyGang.png", 
+            "title":"Абоба", 
+            "description_blocks":[ 
+                {
+                    "text":                    "lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600",
+                    "header":"В первую очередь",
+                    "cover":"assets/preview/moneyGang.png"
+                } ,
+                {
+                    "text":                    "lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600",
+                    "header":"В первую очередь",
+                    "cover":"assets/preview/moneyGang.png"
+                } ,
+                {
+                    "text":                    "lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600",
+                    "header":"В первую очередь",
+                    "cover":"assets/preview/moneyGang.png"
+                } 
+            ],
+            "test":[ 
+                {
+                    "cover":"assets/preview/moneyGang.png",
+                    "question":"какой день", 
+                    "answer":["Солнечный", "Плохой"], 
+                    "rightanswer":1
+                },
+                {
+                    "cover":"assets/preview/moneyGang.png",
+                    "question":"какой день1", 
+                    "answer":["Солнечный2", "Плохой2"], 
+                    "rightanswer":2
+                },
+                {
+                    "cover":"assets/preview/sponge.png",
+                    "question":"какой день3", 
+                    "answer":["Солнечный3", "Плохой3"], 
+                    "rightanswer":2
+                }
+            ]
+        },
+        {
+            "id":2,
+            "cover":"assets/preview/moneyGang.png", 
+            "title":"Абоба", 
+            "description_blocks":[ 
+                {
+                    "text":                    "lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600",
+                    "header":"В первую очередь",
+                    "cover":"assets/preview/moneyGang.png"
+                } ,
+                {
+                    "text":                    "lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600",
+                    "header":"В первую очередь",
+                    "cover":"assets/preview/moneyGang.png"
+                } ,
+                {
+                    "text":                    "lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600lorem600",
+                    "header":"В первую очередь",
+                    "cover":"assets/preview/moneyGang.png"
+                } 
+            ],
+            "test":[ 
+                {
+                    "cover":"assets/preview/moneyGang.png",
+                    "question":"какой день", 
+                    "answer":["Солнечный", "Плохой"], 
+                    "rightanswer":1
+                },
+                {
+                    "cover":"assets/preview/moneyGang.png",
+                    "question":"какой день1", 
+                    "answer":["Солнечный2", "Плохой2"], 
+                    "rightanswer":2
+                },
+                {
+                    "cover":"assets/preview/sponge.png",
+                    "question":"какой день3", 
+                    "answer":["Солнечный3", "Плохой3"], 
+                    "rightanswer":2
+                }
+            ]
         }
 
     ]
