@@ -1,3 +1,4 @@
+import 'package:dw/entities/test/model/tests_repo.dart';
 import 'package:dw/entities/test/ui/test_preview.dart';
 import 'package:flutter/material.dart';
 
@@ -5,9 +6,12 @@ class ThemePreview extends StatelessWidget {
   final String id;
 
   const ThemePreview({super.key, required this.id});
-
   @override
   Widget build(BuildContext context) {
+  TestsRepo repo = TestsRepo();
+  repo.add(UserPartial(id: 1));
+  print("ds");
+  print(repo.items);
     return InkWell(
         onTap: () {
           print(id);

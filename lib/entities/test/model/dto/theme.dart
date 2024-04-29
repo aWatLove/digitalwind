@@ -19,13 +19,25 @@ class ThemeDTO  {
 //       'test':test.map((e) => e.toJson()),
 //     };
 //   }
-  factory ThemeDTO.fromJson(Map<String, dynamic> json) {
-    return ThemeDTO(
-      json['id'] as int,
-      json['cover'] as String,
-      json['test'] as List<TestDTO>,
-      json['title'] as String,
-      json['description_blocks'] as List<DescriptionBlock>
-    );
-}
+        factory ThemeDTO.fromJson(Map<String, dynamic> json) {
+          print("blockckcadas");
+          List<DescriptionBlock> blocks = [];
+          List<TestDTO> tests = [];
+          List<dynamic> parsedTests = json['test'];
+          List<dynamic> parsedBlocks = json['description_blocks'];
+          parsedTests.forEach((element) {
+            tests.add(TestDTO.fromJson(element));
+          });
+          parsedBlocks.forEach((element) {
+          DescriptionBlock block = DescriptionBlock.fromJson(element);
+          blocks.add(block);
+          });
+          return ThemeDTO(
+            json['id'] as int,
+            json['cover'] as String,
+            tests,
+            json['title'] as String,
+            blocks
+          );
+      }
 }
