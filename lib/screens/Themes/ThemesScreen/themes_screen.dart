@@ -57,31 +57,4 @@ class ThemeScreen extends StatelessWidget {
   }
 }
 
-class ThemeDetailScreen extends StatelessWidget {
-  final String id;
-  const ThemeDetailScreen({super.key, required this.id});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Theme_$id'),
-      ),
-      body: InkWell(
-          onTap: () {
-            Navigator.pushNamed(context, '/theme');
-          },
-          child: ListTile(
-            title: Text(
-              'Theme Preview for ID: $id',
-              style: Theme.of(context).textTheme.headline6,
-            ),
-          )),
-    );
-  }
-}
 
-void main() {
-  runApp(MaterialApp(
-    home: ThemeScreen(),
-  ));
-}
