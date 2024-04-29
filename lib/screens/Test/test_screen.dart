@@ -5,11 +5,13 @@ import 'package:dw/entities/test/model/dto/theme.dart';
 import 'package:dw/entities/test/model/tests_repo.dart';
 import 'package:dw/shared/lib/JsonRepository/JsonRepository/json_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 class _TestState extends State<TestScreen> {
-  int index = 0; //answer
-  late final int themeId;
+  int index = 0; //test index
+  late final int themeId; // id темы
   late List<int?> selectedAnswers;
   CheckedStatus status = CheckedStatus.idle;
   int? answerIndex;
@@ -91,37 +93,49 @@ class _TestState extends State<TestScreen> {
       return Scaffold(
           bottomSheet: Container(
               width: double.infinity,
-              height: 100,
+              height: 120,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Container(
+                    decoration: BoxDecoration(color: Color.fromRGBO(255, 255, 255, 1)),
+                    height: 50,
                     child: Visibility(
                         visible: status != CheckedStatus.idle,
-                        child: Row(
+                        child: Container(
+                          decoration: BoxDecoration(color: Color.fromRGBO(209, 209, 209, 0), borderRadius:BorderRadius.vertical(top: Radius.circular(20)) ),
+                          child:Row(
+                            
                           children: [
-                            Icon(Icons.close,
+                            SizedBox(width: 15),
+                            Icon(status == CheckedStatus.rejected 
+                                    ? Icons.remove_circle_outline_sharp 
+                                    : Icons.check_circle,
                                 color: status == CheckedStatus.rejected
-                                    ? Colors.red
-                                    : Colors.green),
+                                    ? Color.fromRGBO(246, 136, 136, 1)
+                                    : Color.fromRGBO(136, 246, 193, 1),
+                                    size: 40,),
+                            SizedBox(width: 10,),
                             Text(status == CheckedStatus.rejected
                                 ? 'Неверно :('
-                                : 'Замечательно !')
+                                : 'Замечательно !', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),)
                           ],
-                        )),
+                        ))),
                   ),
                   ElevatedButton(
+
                     style: ButtonStyle(
+                        padding: MaterialStateProperty.all(EdgeInsets.only(top: 20, bottom: 20)),
                         backgroundColor:
-                            MaterialStateProperty.all(Colors.green)),
+                            MaterialStateProperty.all(status == CheckedStatus.rejected ? Color.fromRGBO(246, 136, 136, 1) : Color.fromRGBO(136, 246, 193, 1))),
                     onPressed: selectedAnswers[index] != null
                         ? () => onSubmit()
                         : null, // Проверка, выбран ли ответ
-                    child: Text(isEnd
-                        ? 'Закончить'
+                    child: Text(style: TextStyle(color: Colors.black, fontWeight: FontWeight.w800, fontSize: 16),isEnd
+                        ? 'ЗАКОНЧИТЬ'
                         : isChoosen
-                            ? 'Следующий'
-                            : 'Выберите ответ'),
+                            ? 'СЛЕДУЮЩИЙ'
+                            : 'ВЫБЕРИТЕ ОТВЕТ'),
                   )
                 ],
               )),
@@ -131,22 +145,28 @@ class _TestState extends State<TestScreen> {
           body: 
             Column(
               children: [
-                Image.asset(test.test[index].cover),
-                Text(
+                SizedBox(height: 61,),
+                Image.asset(test.test[index].cover,fit: BoxFit.cover/*TODO может сломаться*/ ,),
+                SizedBox(height: 12,),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 23),
+                  child: Text(
                   test.test[index].question,
-                  style: TextStyle(fontSize: 20),
-                ),
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w900),
+                )),
                 SizedBox(height: 20, width: double.infinity),
                 ...(test.test[index].answer as List<String>)
                     .mapIndexed((index, answer) {
                   return ElevatedButton(
                     style: ButtonStyle(
+                      
                       backgroundColor: selectedAnswers[this.index] == index
-                          ? MaterialStateProperty.all(Colors.green)
+                          ? status == CheckedStatus.rejected ? MaterialStateProperty.all(Color.fromRGBO(246, 136, 136, 1)) : MaterialStateProperty.all(Color.fromRGBO(136, 246, 193, 1))
                           : null, // Зеленый цвет кнопки при выборе ответа
+                      
                     ),
                     onPressed: () => answerQuestion(index),
-                    child: Text(answer),
+                    child: SizedBox(width: 180,child:Center(child:Text(answer, style: TextStyle(fontSize: 16, color: Colors.black),))),
                   );
                 }).toList(),
                 const SizedBox(height: 20)

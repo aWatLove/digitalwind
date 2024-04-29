@@ -82,7 +82,7 @@ class TestPreview extends StatelessWidget {
                         ? Container(
                             margin: const EdgeInsets.only(right: 210, top: 30),
                             decoration: const BoxDecoration(
-                              color: Color.fromRGBO(136, 246, 193, 100),
+                              color: Color.fromRGBO(136, 246, 193, 1),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                             ),
@@ -90,7 +90,7 @@ class TestPreview extends StatelessWidget {
                               children: [
                                 Icon(
                                   Icons.check_circle_outline_outlined,
-                                  color: Color.fromRGBO(0, 169, 87, 0.612),
+                                  color: Color.fromRGBO(0, 169, 87, 1),
                                 ),
                                 SizedBox(
                                   width: 10,
@@ -104,7 +104,7 @@ class TestPreview extends StatelessWidget {
                         : Container(
                             margin: const EdgeInsets.only(right: 180, top: 30),
                             decoration: const BoxDecoration(
-                              color: Color.fromRGBO(246, 136, 136, 100),
+                              color: Color.fromRGBO(246, 136, 136, 1),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                             ),
@@ -112,7 +112,7 @@ class TestPreview extends StatelessWidget {
                               children: [
                                 Icon(
                                   Icons.play_circle_rounded,
-                                  color: Color.fromRGBO(255, 62, 62, 100),
+                                  color: Color.fromRGBO(255, 62, 62, 1),
                                 ),
                                 SizedBox(
                                   width: 10,
