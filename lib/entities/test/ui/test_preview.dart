@@ -45,6 +45,7 @@ class TestPreview extends StatelessWidget {
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   SizedBox(
                       // picture
@@ -80,9 +81,9 @@ class TestPreview extends StatelessWidget {
                     width: double.infinity,
                     child: proccess
                         ? Container(
-                            margin: const EdgeInsets.only(right: 210, top: 30),
+                            margin: const EdgeInsets.only(right: 210,),
                             decoration: const BoxDecoration(
-                              color: Color.fromRGBO(136, 246, 193, 1),
+                              color: Color.fromRGBO(136, 246, 193, 0.75),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                             ),
@@ -102,16 +103,16 @@ class TestPreview extends StatelessWidget {
                               ],
                             ))
                         : Container(
-                            margin: const EdgeInsets.only(right: 180, top: 30),
+                            margin: const EdgeInsets.only(right: 180, ),
                             decoration: const BoxDecoration(
-                              color: Color.fromRGBO(246, 136, 136, 1),
+                              color: Color.fromRGBO(246, 136, 136, 0.5),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                             ),
                             child: const Row(
                               children: [
                                 Icon(
-                                  Icons.play_circle_rounded,
+                                  Icons.play_circle_outline_outlined,
                                   color: Color.fromRGBO(255, 62, 62, 1),
                                 ),
                                 SizedBox(
