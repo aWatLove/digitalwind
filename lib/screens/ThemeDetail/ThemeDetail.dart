@@ -16,25 +16,26 @@ class ThemeDetailScreen extends StatelessWidget {
     String jsonString = await rootBundle.loadString('assets/db.json');
     List<ThemeDTO> themsDtos = [];
     List<dynamic> themes = json.decode(jsonString)['themes'];
-    themes.forEach((element) {
-      List<DescriptionBlock> blocks = [];
-      List<TestDTO> test = [];
-      List<dynamic> blocksParsed = element['description_blocks'];
-      List<dynamic> testParsed = element['test'];
-      testParsed.forEach((element) {
-        test.add(TestDTO.fromJson(element));
-      });
-      blocksParsed.forEach((element) {
-        print(element);
-        DescriptionBlock block = DescriptionBlock.fromJson(element);
-        blocks.add(block);
-      });
-      ThemeDTO theme = ThemeDTO(
-          element['id'], element['cover'], test, element['title'], blocks);
-      themsDtos.add(theme);
-    });
-    ThemeDTO t = (themsDtos.elementAt(id));
-    return t;
+    themsDtos = themes.map((e) => ThemeDTO.fromJson(e)).toList();
+    // themes.forEach((element) {
+    //   List<DescriptionBlock> blocks = [];
+    //   List<TestDTO> test = [];
+    //   List<dynamic> blocksParsed = element['description_blocks'];
+    //   List<dynamic> testParsed = element['test'];
+    //   testParsed.forEach((element) {
+    //     test.add(TestDTO.fromJson(element));
+    //   });
+    //   blocksParsed.forEach((element) {
+    //     print(element);
+    //     DescriptionBlock block = DescriptionBlock.fromJson(element);
+    //     blocks.add(block);
+    //   });
+    //   ThemeDTO theme = ThemeDTO(
+    //       element['id'], element['cover'], test, element['title'], blocks);
+    //   themsDtos.add(theme);
+    // });
+    // ThemeDTO t = (themsDtos.elementAt(id));
+    return themsDtos.elementAt(id);
   }
 
   @override
@@ -85,12 +86,12 @@ class ThemeDetailScreen extends StatelessWidget {
                       height: MediaQuery.of(context).size.height,
                       width: double.infinity,
                       constraints: const BoxConstraints(maxWidth: 600),
-                      child: Expanded(
+                      child: Container(
                           child: ListView(
                               padding: const EdgeInsets.all(5.0),
                               children: data.description_blocks
-                                  .map((e) => BLockItem(e))
-                                  .toList())))));
+                                  .map((e) => ListTile(title:BLockItem(e)))
+                                  .toList()),))));
         }
       },
     );

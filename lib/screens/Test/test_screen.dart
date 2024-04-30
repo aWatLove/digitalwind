@@ -1,11 +1,12 @@
 import 'dart:convert';
-import 'dart:js_interop_unsafe';
+// import 'dart:js_interop_unsafe';
 
 import 'package:dw/entities/test/model/consts/consts.dart';
 import 'package:dw/entities/test/model/dto/test.dart';
 import 'package:dw/entities/test/model/dto/theme.dart';
 import 'package:dw/entities/test/model/tests_repo.dart';
 import 'package:dw/shared/lib/JsonRepository/JsonRepository/json_repository.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -83,8 +84,10 @@ class _TestState extends State<TestScreen> {
           status = CheckedStatus.idle;
         }
       } else {
-        setFinished(true);
-        Navigator.of(context).pushNamed('/');
+        if (status == CheckedStatus.succes) {
+          setFinished(true);
+          Navigator.of(context).pushNamed('/');
+        }
       }
     });
   }
@@ -114,18 +117,22 @@ class _TestState extends State<TestScreen> {
         bottomSheet: Container(
             width: double.infinity,
             height: 120,
+            color: Color.fromRGBO(255, 255, 255, 0.75),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Container(
-                  decoration:
-                      BoxDecoration(color: Color.fromRGBO(255, 255, 255, 1)),
-                  height: 50,
-                  child: Visibility(
+                Visibility(
                       visible: status != CheckedStatus.idle,
+
+                  // decoration:
+                      // BoxDecoration(color: Color.fromRGBO(255, 255, 255, 1)),
+                  child: Container(
+                  height: 50,
+
                       child: Container(
                           decoration: BoxDecoration(
-                              color: Color.fromRGBO(209, 209, 209, 0),
+                              color: Color.fromRGBO(255, 255, 255, 1),
                               borderRadius: BorderRadius.vertical(
                                   top: Radius.circular(20))),
                           child: Row(
@@ -180,12 +187,13 @@ class _TestState extends State<TestScreen> {
         appBar: AppBar(
           title: Text('${test.title}'),
         ),
-        body: Column(
+        body: SingleChildScrollView(child: Column(
           children: [
-            SizedBox(height: 61),
+            // SizedBox(height: 61),
             Image.asset(
               test.test[index].cover,
-              fit: BoxFit.cover /*TODO может сломаться*/,
+              fit: BoxFit.cover,
+              height: 220,
             ),
             SizedBox(height: 12),
             Container(
@@ -208,20 +216,22 @@ class _TestState extends State<TestScreen> {
                       : null, // Зеленый цвет кнопки при выборе ответа
                 ),
                 onPressed: () => answerQuestion(index),
-                child: SizedBox(
-                    width: 180,
-                    height: 20,
-                    child: Center(
-                        child: Text(
-                      answer,
-                      style: TextStyle(fontSize: 16, color: Colors.black),
-                    ))),
+                child: Container(
+                    width: MediaQuery.of(context).size.width - 100,
+                    height: 65,
+                    child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Center(
+                            child: Text(
+                          answer,
+                          style: TextStyle(fontSize: 16, color: Colors.black),
+                        )))),
               );
             }).toList(),
             const SizedBox(height: 20)
           ],
         ),
-      );
+      ));
     }
   }
 }

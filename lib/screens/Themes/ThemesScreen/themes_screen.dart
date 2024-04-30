@@ -61,7 +61,7 @@ class ThemeScreen extends StatelessWidget {
           List<ThemeDTO> themes = snapshot.data!;
           return Scaffold(
             appBar: AppBar(
-              title: Text('Какие то тестики'), //TODO: незабыть поменять
+              title: Text('Цифровой ветер'),
             ),
             body: Center(
               child: SizedBox(

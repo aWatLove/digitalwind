@@ -1,5 +1,5 @@
 name: dw
-description: "A new Flutter project."
+description: "Digital wind project. Aristov A.V., Suvorov V.Y., Gindemit P.S."
 publish_to: 'none'
 version: 0.1.0
 
@@ -22,6 +22,11 @@ dev_dependencies:
   build_runner: ^2.4.9
   json_serializable: ^6.8.0
 
+flutter_icons:
+    android: true
+    ios: true
+    image_path: "assets/preview/logo.png"
+
 flutter:
   uses-material-design: true
   assets: 
@@ -30,3 +35,4 @@ flutter:
     - assets/infoblock/
     - assets/test/
     - assets/infoblock/
+  
