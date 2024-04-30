@@ -19,7 +19,7 @@ void main() {
           case '/':
             return MaterialPageRoute(builder: (_) => const ThemeScreen());
           case '/theme':
-            final int id = int.parse(args['id']);
+            final int? id = args['id'];
             if (id == null) {
               return MaterialPageRoute(
                   builder: (_) => const Four04Page("id is null"));
